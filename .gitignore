@@ -1,0 +1,14 @@
+# Node
+node_modules/
+.env
+.DS_Store
+build/
+dist/
+
+# Logs
+logs
+*.log
+
+# Vercel/Render
+.vercel/
+.render/
