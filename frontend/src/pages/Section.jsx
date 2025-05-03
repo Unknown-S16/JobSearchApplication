@@ -16,7 +16,7 @@ const Section = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/jobs")
+      .get("https://jobsearchapplication.onrender.com/api/jobs")
       .then((res) => {
         const originalJobs = res.data;
         const repeatedJobs = Array(4)

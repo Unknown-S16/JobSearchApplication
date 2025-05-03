@@ -34,7 +34,7 @@ const AdminPage = ({ onClose }) => {
   
    
     try {
-      await axios.post("http://localhost:5000/api/jobs", jobData);
+      await axios.post("https://jobsearchapplication.onrender.com/api/jobs", jobData);
   
       alert("Job posted successfully!");
       setFormData({
