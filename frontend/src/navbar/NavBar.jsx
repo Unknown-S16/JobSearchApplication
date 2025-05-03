@@ -11,7 +11,7 @@ const titles = [
 const NavBar = ({ onCreateClick }) => {
   return (
     <nav className=" flex items-center justify-between px-[25px] py-[16px]  mx-auto max-w-[890px] bg-white rounded-full list-none shadow-[0_1px_15px_rgba(0,0,0,0.1)]">
-      <img src="./images/logo.png" alt="WebLogo" className="h-[44px]" />
+      <img src="https://ik.imagekit.io/hg3rwpt4ia/intern/logo.png?updatedAt=1746274820019" alt="WebLogo" className="h-[44px]" />
 
       {titles.map((item) => (
         <li key={item.name}>
