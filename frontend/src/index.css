@@ -8,6 +8,11 @@ select option:disabled {
   color: #b6b8bb; 
 }
  .custombg{
-  background-color: rgba(0, 0, 0, 0.427);
+  background-color: rgba(169, 167, 167, 0.263);
 
+ }
+
+ .bgcolor{
+  background: #e3e8f259;
+  
  }

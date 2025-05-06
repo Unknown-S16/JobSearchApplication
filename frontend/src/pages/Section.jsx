@@ -13,19 +13,21 @@ const Section = () => {
   const [salaryRange, setSalaryRange] = useState([50, 80]);
 
   const baseUrl = "https://ik.imagekit.io/hg3rwpt4ia/intern";
-
+  
   useEffect(() => {
     axios
       .get("https://jobsearchapplication.onrender.com/api/jobs")
       .then((res) => {
         const originalJobs = res.data;
+        console.log(originalJobs);
+
         const repeatedJobs = Array(4)
           .fill(originalJobs)
           .flat()
           .map((job, index) => ({
             ...job,
             _id: `${job._id}-${index}`,
-            randomImg: Math.floor(Math.random() * 3) + 1, 
+            randomImg: Math.floor(Math.random() * 3) + 1,
           }));
         setJobs(repeatedJobs);
       })
@@ -38,9 +40,12 @@ const Section = () => {
     const matchesLocation = location === "" || item.location === location;
     const matchesJobType = jobType === "" || item.jobType === jobType;
     const matchesSalary =
-      item.salary >= salaryRange[0] && item.salary <= salaryRange[1];
+      item.salary / 12 >= salaryRange[0] * 1000 &&
+      item.salary / 12 <= salaryRange[1] * 1000;
+
     return matchesRole && matchesLocation && matchesJobType && matchesSalary;
   });
+  console.log(filteredItems);
 
   return (
     <section>
@@ -55,7 +60,7 @@ const Section = () => {
         setSalaryRange={setSalaryRange}
       />
 
-      <div className="grid mt-[4%] mx-[3%] grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid py-[3%] px-[4%] grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 bgcolor">
         {filteredItems.length > 0 ? (
           filteredItems.map((item) => (
             <div
@@ -71,22 +76,22 @@ const Section = () => {
               </div>
               <h3 className="text-lg font-semibold">{item.title}</h3>
 
-              <div className="text-gray-500 flex items-center gap-[5%]">
-                <p className="text-gray-500 flex items-center">
+              <div className="text-gray-500 flex items-center text-[90%] gap-[5%]">
+                <p className="text-gray-500 flex  flex-[1] items-center">
                   <MdOutlinePersonAddAlt />
                   &nbsp;1–3 yr Exp
                 </p>
-                <p className="text-gray-500 flex items-center">
+                <p className="text-gray-500 flex-[1] flex items-center">
                   <TbBuildings />
-                  &nbsp;{item.jobType}
+                  &nbsp;{item.location}
                 </p>
                 <p className="text-gray-500 flex items-center">
                   <GoStack />
-                  &nbsp;{item.salary} LPA
+                  &nbsp;{(item.salary / 100000).toFixed(0)} LPA
                 </p>
               </div>
 
-              <p className="text-gray-500 text-sm">{item.description}</p>
+              <p className="text-gray-500 flex-[1] text-sm">{item.description}</p>
 
               <button className="bg-blue-400 hover:bg-blue-500 w-full p-3 text-white rounded-lg">
                 Apply Now

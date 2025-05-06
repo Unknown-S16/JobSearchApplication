@@ -25,26 +25,26 @@ const Filter = ({
   const max = Math.max(...salaryRange);
 
   return (
-    <div className="flex w-full justify-between mt-4 p-4 bg-white px-[5%] shadow-md shadow-gray-100">
+    <div className="lg:flex  w-full justify-between items-center mt-4 p-4  px-[5%] shadow-md shadow-gray-100">
       {/* Role */}
-      <div className="flex-1 px-2 flex items-center border-r-3 border-gray-200 text-gray-500">
+      <div className="flex-1 p-2 lg:border-r-3  flex items-center justify-center border lg:border-0 lg:max-h-10 border-gray-200 text-gray-500">
         <IoSearchOutline size={25} />
         <input
           type="text"
           placeholder="Search By Job Title, Role"
           value={role}
           onChange={(e) => setRole(e.target.value)}
-          className="w-full px-2 py-2 placeholder-gray-500 text-gray-700"
+          className=" p-2  placeholder-gray-500 text-gray-700 "
         />
       </div>
 
       {/* Location */}
-      <div className="flex-1 px-2 flex items-center text-gray-500 justify-center border-r-3 border-gray-200">
+      <div className="flex-1 p-2 flex items-center text-gray-500 lg:max-h-10 justify-center border lg:border-0 lg:border-r-3 border-gray-200">
         <SlLocationPin size={20} />
         <select
           value={location}
           onChange={(e) => setLocation(e.target.value)}
-          className="px-2 py-3 w-[70%]"
+          className="px-2 py-3 lg:pr-[10%] "
         >
           <option value="" hidden>
             Preferred Location
@@ -58,12 +58,12 @@ const Filter = ({
       </div>
 
       {/* Job Type */}
-      <div className="flex-1 px-2 border-r-3 flex justify-center items-center border-gray-200 text-gray-500">
+      <div className="flex-1 p-2 border lg:border-0 lg:border-r-3 lg:max-h-10 flex justify-center items-center border-gray-200 text-gray-500">
         <RiUserVoiceLine size={20} />
         <select
           value={jobType}
           onChange={(e) => setJobType(e.target.value)}
-          className="w-[50%] px-2 py-3 mt-2"
+          className=" px-2 py-3 lg:pr-[10%] mt-2"
         >
           <option value="" hidden>
             Job Type
@@ -77,34 +77,36 @@ const Filter = ({
       </div>
 
       {/* Salary Range */}
-      <div className="flex-1 flex justify-center px-5">
-        <Box sx={{ width: { xs: 100, md: 300 } }}>
-          <div className="flex w-full">
-            <p className="hidden lg:inline flex-1 text-center">Salary Per Month</p>
-            <p className="flex-1 text-center">
-              ₹{min}k - ₹{max}k
-            </p>
-          </div>
+      <div className="flex-1 flex justify-center p-2 border items-center lg:pl-[5%] lg:border-0 border-gray-200">
+  <Box sx={{ width: '100%', maxWidth:'300px' }}> 
+    <div className="flex w-full "> 
+      <p className="flex-1 text-center ">Salary Per Month</p>
+      <p className="flex-1 text-center">
+        ₹{min}k - ₹{max}k
+      </p>
+    </div>
 
-          <Slider
-            value={salaryRange}
-            onChange={handleSalaryChange}
-            min={5}
-            max={100}
-            step={5}
-            sx={{
-              color: "black",
-              "& .MuiSlider-thumb": {
-                backgroundColor: "white",
-                border: "5px solid black",
-                width: 15,
-                height: 15,
-                borderRadius: "50%",
-              },
-            }}
-          />
-        </Box>
-      </div>
+    <Slider
+      value={salaryRange}
+      onChange={handleSalaryChange}
+      min={5}
+      max={100}
+      step={5}
+      sx={{
+        width: '100%', 
+        color: "black",
+        "& .MuiSlider-thumb": {
+          backgroundColor: "white",
+          border: "5px solid black",
+          width: 15,
+          height: 15,
+          borderRadius: "50%",
+        },
+      }}
+    />
+  </Box>
+</div>
+
     </div>
   );
 };

@@ -4,7 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(cors({ origin: "https://job-search-application-n5v1.vercel.app" })); 
+app.use(cors({ origin:  "https://job-search-application-n5v1.vercel.app"})); 
 app.use(express.json());
 
 mongoose.connect(process.env.MongoDB)
