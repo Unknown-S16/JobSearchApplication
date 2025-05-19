@@ -47,7 +47,7 @@ const AdminPage = ({ onClose }) => {
         description: "",
         deadline: "",
       });
-      console.log("roller", jobData);
+      
     } catch (err) {
       console.error("Error posting job:", err);
       alert("Failed to post job.");
@@ -122,7 +122,7 @@ const AdminPage = ({ onClose }) => {
         <option value="Internship">Internship</option>
       </select>
     </div>
-
+     
     {/* Salary Range */}
     <div className="flex flex-col">
       <label className="mb-1 font-medium text-gray-700">Salary Range (₹)</label>
@@ -130,7 +130,7 @@ const AdminPage = ({ onClose }) => {
         <input
           type="number"
           name="minSalary"
-          placeholder="0"
+          placeholder=" ↑↓ 0"
           min={0}
           max={1000000}
           step={500}
@@ -141,7 +141,7 @@ const AdminPage = ({ onClose }) => {
         <input
           type="number"
           name="maxSalary"
-          placeholder="1200000"
+          placeholder=" ↑↓ 1200000"
           max={1000000}
           min={0}
           step={500}
@@ -150,7 +150,7 @@ const AdminPage = ({ onClose }) => {
           className="w-full border text-center  p-[4%] rounded-xl"
         />
       </div>
-    </div>
+    </div> 
 
     {/* Deadline */}
     <div className="flex flex-col">
